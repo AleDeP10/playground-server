@@ -17,6 +17,7 @@ app.use(cookieParser());
 
 const httpServer = http.createServer(app);
 
+import homeRoutes from './routes/home.js';
 // const authRoutes = require('./routes/authRoutes');
 //import userRoutes from './routes/userRoutes';
 //import usersRoutes from './routes/usersRoutes';
@@ -24,6 +25,7 @@ const httpServer = http.createServer(app);
 //import chatController from './controllers/chatController';
 app.use(knexMiddleware);
 
+app.use('/', homeRoutes);
 // app.use('/myopenchat/api/auth', authRoutes);
 //app.use('/myopenchat/api/user', userRoutes);
 //app.use('/myopenchat/api/users', usersRoutes);
@@ -34,6 +36,10 @@ import { Server } from "socket.io";
 import jwt from 'jsonwebtoken';
 
 const server = http.createServer(app);
+
+const router = express.Router();
+app.use('/', router);
+
 const io = new Server(httpServer, {
     // Opzioni di configurazione
     server, socketCorsOptions
