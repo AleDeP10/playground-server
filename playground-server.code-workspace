@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../moc-be"
+		},
+		{
+			"path": "../moc-fe"
+		},
+		{
+			"path": "../playground"
+		}
+	],
+	"settings": {}
+}
