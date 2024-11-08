@@ -25,6 +25,4 @@ export const socketCorsOptions = {
   }
 };
 
-//export default { corsOptions, socketCorsOptions };
-
 

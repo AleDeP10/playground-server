@@ -47,15 +47,15 @@ const io = new Server(httpServer, {
 
 //const utentiConnessi = require('./dataStore');
 
-function logUtentiConnessi(){
-  console.log("utentiConnessi:")
-  for (const key in utentiConnessi) {
-    if (Object.hasOwnProperty.call(utentiConnessi, key)) {
-      const value = utentiConnessi[key];
-      console.log(`connected user ${key} -> `,JSON.stringify(value));
-    }
-  }
-}
+// function logUtentiConnessi(){
+//   console.log("utentiConnessi:")
+//   for (const key in utentiConnessi) {
+//     if (Object.hasOwnProperty.call(utentiConnessi, key)) {
+//       const value = utentiConnessi[key];
+//       console.log(`connected user ${key} -> `,JSON.stringify(value));
+//     }
+//   }
+// }
 
 // io.use((socket, next) => {
 //   console.log('Using authentication middleware'); // Log di debug

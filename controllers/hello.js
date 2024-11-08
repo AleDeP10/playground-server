@@ -1,10 +1,10 @@
 export const hello = async (req, res) => {
-  let nome = 'World';
-  if (req.body.nome) {
-    nome = req.body.nome;
+  let name = 'World';
+  if (req.body.name) {
+    name = req.body.name;
   }
-  const result = 'Hello, ' + nome + '!';
+  const result = 'Hello, ' + name + '!';
   res.status(200).json({ result });
-  console.log({ nome: req.body.nome, result });
+  console.log({ body: req.body, result });
   return result;
 };
