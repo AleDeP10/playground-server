@@ -14,7 +14,7 @@
     "nodejs"
   ],
   "author": "AleDeP10",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
