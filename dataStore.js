@@ -1,3 +1,2 @@
 const utentiConnessi = {};
-
-module.exports = utentiConnessi
+export default utentiConnessi;

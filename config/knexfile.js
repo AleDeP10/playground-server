@@ -1,5 +1,3 @@
-// knexfile.js
-//const knex = require('knex');
 import knex from 'knex';
 
 const db = knex({
