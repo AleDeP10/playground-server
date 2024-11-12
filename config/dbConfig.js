@@ -1,6 +1,13 @@
-const { Pool } = require('pg');
+import pkg from 'pg'; 
+import dotenv from 'dotenv'; 
 
-let pool; 
+dotenv.config(); 
+const { Pool } = pkg;
+
+console.log({ passType: typeof process.env.DB_PASSWORD, password: process.env.DB_PASSWORD });
+console.log({ user: process.env.DB_USERNAME, host: process.env.DB_HOSTNAME, password: process.env.DB_PASSWORD, database: process.env.DB_DATABASE, passType: typeof process.env.DB_PASSWORD});
+
+let pool;
 if (process.env.DB_HOSTNAME === "localhost") {
 
   pool = new Pool({
@@ -26,7 +33,7 @@ if (process.env.DB_HOSTNAME === "localhost") {
 
 }
 
-module.exports = pool;
+export default pool;
 
 
 
