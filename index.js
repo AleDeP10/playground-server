@@ -18,6 +18,7 @@ app.use(cookieParser());
 const httpServer = http.createServer(app);
 
 import homeRoutes from './routes/home.js';
+import todoRoutes from './routes/todo.js';
 // const authRoutes = require('./routes/authRoutes');
 //import userRoutes from './routes/userRoutes';
 //import usersRoutes from './routes/usersRoutes';
@@ -26,6 +27,7 @@ import homeRoutes from './routes/home.js';
 app.use(knexMiddleware);
 
 app.use('/', homeRoutes);
+app.use('/todo', todoRoutes);
 // app.use('/myopenchat/api/auth', authRoutes);
 //app.use('/myopenchat/api/user', userRoutes);
 //app.use('/myopenchat/api/users', usersRoutes);

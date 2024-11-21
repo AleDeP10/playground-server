@@ -1,12 +1,9 @@
-// db.js
-//const db = require('../config/knexfile'); // Importa la configurazione di Knex.js
-import db from '../config/knexfile.js';
+import knexInstance from '../config/knexfile.js';
 
-// Middleware per aggiungere knex all'oggetto req
-const knexMiddleware = (req, res, next) => {
-  req.db = db; // Aggiunge la connessione knex all'oggetto req
+const addKnexToReq = (req, res, next) => {
+  req.db = knexInstance;
+  console.log('Knex instance added to request:', req.db !== undefined);
   next();
 };
 
-//module.exports = knexMiddleware;
-export default knexMiddleware;
+export default addKnexToReq;
