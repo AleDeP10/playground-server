@@ -11,6 +11,8 @@ import knexMiddleware from './middleware/dbMiddleware.js';
 const app = express();
 
 //https server ====================================================================
+import http from 'http';
+
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
@@ -19,21 +21,12 @@ const httpServer = http.createServer(app);
 
 import homeRoutes from './routes/home.js';
 import todoRoutes from './routes/todo.js';
-// const authRoutes = require('./routes/authRoutes');
-//import userRoutes from './routes/userRoutes';
-//import usersRoutes from './routes/usersRoutes';
-
-//import chatController from './controllers/chatController';
-app.use(knexMiddleware);
+// app.use(knexMiddleware);
 
 app.use('/', homeRoutes);
 app.use('/todo', todoRoutes);
-// app.use('/myopenchat/api/auth', authRoutes);
-//app.use('/myopenchat/api/user', userRoutes);
-//app.use('/myopenchat/api/users', usersRoutes);
 
 //socket ==========================================================================
-import http from 'http';
 import { Server } from "socket.io";
 import jwt from 'jsonwebtoken';
 
@@ -43,9 +36,9 @@ const router = express.Router();
 app.use('/', router);
 
 const io = new Server(httpServer, {
-    // Opzioni di configurazione
-    server, socketCorsOptions
-  });
+  // Opzioni di configurazione
+  server, socketCorsOptions
+});
 
 //const utentiConnessi = require('./dataStore');
 
@@ -108,7 +101,7 @@ const io = new Server(httpServer, {
 console.log({ env: process.env });
 const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => {
-    console.log(`Server listening on port ${PORT}`);
+  console.log(`Server listening on port ${PORT}`);
 });
 
 //console.log('index.js', { utentiConnessi })
