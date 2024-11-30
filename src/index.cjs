@@ -1,17 +1,17 @@
-import express from 'express';
-import cors from 'cors'
-import cookieParser from 'cookie-parser'
-import dotenv from 'dotenv';
+const express = require('express');
+const cors = require('cors')
+const cookieParser = require('cookie-parser')
+const dotenv = require('dotenv');
 dotenv.config();
-import { corsOptions, socketCorsOptions } from './config/corsConfig.js';
-//import { authenticateTokenSocket } from './middleware/socketAuthMiddleware';
-import knexMiddleware from './middleware/dbMiddleware.js';
+const { corsOptions, socketCorsOptions } = require('./config/corsConfig.cjs');
+//const { authenticateTokenSocket } = require('./middleware/socketAuthMiddleware');
+const knexMiddleware = require('./middleware/dbMiddleware.cjs');
 
 
 const app = express();
 
 //https server ====================================================================
-import http from 'http';
+const http = require('http');
 
 app.use(cors(corsOptions));
 app.use(express.json());
@@ -19,16 +19,16 @@ app.use(cookieParser());
 
 const httpServer = http.createServer(app);
 
-import homeRoutes from './routes/home.js';
-import todoRoutes from './routes/todo.js';
+const homeRoutes = require('./routes/home.cjs');
+const todoRoutes = require('./routes/todo.cjs');
 // app.use(knexMiddleware);
 
 app.use('/', homeRoutes);
 app.use('/todo', todoRoutes);
 
 //socket ==========================================================================
-import { Server } from "socket.io";
-import jwt from 'jsonwebtoken';
+const { Server } = require('socket.io');
+const jwt = require('jsonwebtoken');
 
 const server = http.createServer(app);
 
@@ -40,10 +40,10 @@ const io = new Server(httpServer, {
   server, socketCorsOptions
 });
 
-//const utentiConnessi = require('./dataStore');
+// const utentiConnessi = require('./dataStore');
 
 // function logUtentiConnessi(){
-//   console.log("utentiConnessi:")
+//   console.log('utentiConnessi:')
 //   for (const key in utentiConnessi) {
 //     if (Object.hasOwnProperty.call(utentiConnessi, key)) {
 //       const value = utentiConnessi[key];
@@ -64,7 +64,7 @@ const io = new Server(httpServer, {
 //   logUtentiConnessi()
 
 //   socket.on('sendMessage', (msgData) => {
-//     msgData["userId"] = socket.userId
+//     msgData['userId'] = socket.userId
 //     console.log('Received message:', msgData)
 
 //     try {
@@ -78,7 +78,7 @@ const io = new Server(httpServer, {
 //   });
 
 //   socket.on('isUserTyping', (msgData) => {
-//     msgData["userId"] = socket.userId
+//     msgData['userId'] = socket.userId
 //     console.log('Received isUserTyping message:', msgData)
 //     try {
 //       const targetSocket = utentiConnessi[msgData.recUserId] 

@@ -1,5 +1,5 @@
-import pool from "../config/dbConfig.js";
-import utentiConnessi from '../dataStore.js';
+const pool = require('../config/dbConfig.cjs');
+const utentiConnessi = require('../dataStore.cjs');
 
 
 // const setCriteriQuery = (query, criteri) => {
@@ -13,7 +13,7 @@ import utentiConnessi from '../dataStore.js';
 //         });
 
 //         let valoriSezioni = getSezioni(criteri, tabella)
-//         console.log("valoriSezioni=", valoriSezioni)
+//         console.log('valoriSezioni=', valoriSezioni)
 //         for (const val of valoriSezioni) {
 //             query.where(`tab${i}.${val.campo}`, val.newValue.id);
 //         }
@@ -54,8 +54,9 @@ import utentiConnessi from '../dataStore.js';
 //     return risultati;
 // }
 
-export const crea = async (req, res) => {
+const crea = async (req, res) => {
     const { task, status = 'TODO' } = req.body;
+    console.log('todoList.controller', {db: req.db})
     try {
         const [id] = await req.db('Task')
             .insert({ task, status })
@@ -75,6 +76,7 @@ const setCriteriQuery = (query, criteri) => {
 };
 
 const ricerca = async (req, res) => {
+    console.log('todoList.controller', {db: req.db})
     const criteri = req.body;
     try {
         let query = req.db('Task AS ts')
@@ -92,7 +94,8 @@ const ricerca = async (req, res) => {
     }
 };
 
-export const aggiorna = async (req, res) => {
+const aggiorna = async (req, res) => {
+    console.log('todoList.controller', {db: req.db})
     const { id } = req.query;
     const { task, status } = req.body;
     try {
@@ -110,7 +113,8 @@ export const aggiorna = async (req, res) => {
     }
 };
 
-export const cancella = async (req, res) => {
+const cancella = async (req, res) => {
+    console.log('req.db type:', typeof req.db); // Verifica che sia 'function'
     const { id } = req.query;
     try {
         const count = await req.db('Task').where({ id }).del();
@@ -125,7 +129,7 @@ export const cancella = async (req, res) => {
     }
 };
 
-export default { crea, ricerca, aggiorna, cancella };
+module.exports = { crea, ricerca, aggiorna, cancella };
 
 
 // const ricerca = async (req, res) => {
@@ -140,7 +144,7 @@ export default { crea, ricerca, aggiorna, cancella };
 //     //         .from('Task as ts')
 //     //         .where('ts.status', '=', req.db.raw('?', ['stato']));   // Usa raw per il valore statico
 
-//     //     query = setCriteriQuery(query, criteri) // criteri deve contenere "stato"
+//     //     query = setCriteriQuery(query, criteri) // criteri deve contenere 'stato'
 
 //     //     const risultati = await query;
 //     //     console.log({ criteri, risultati });
@@ -179,5 +183,3 @@ export default { crea, ricerca, aggiorna, cancella };
 //         //throw new Error('errore ricerca', err);
 //     }
 // };
-
-// export default { ricerca };

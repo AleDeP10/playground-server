@@ -4,7 +4,7 @@ const whitelist = [
   'https://playground.io'
 ];
 
-export const corsOptions = {
+const corsOptions = {
   origin: (origin, callback) => {
     if (whitelist.includes(origin) || !origin) {
       callback(null, true);
@@ -16,13 +16,13 @@ export const corsOptions = {
   allowedHeaders: ['Content-Type', 'Authorization'] // Aggiungi Authorization agli allowedHeaders
 };
 
-export const socketCorsOptions = {
+const socketCorsOptions = {
   cors: {
-    origin: process.env.DB_HOSTNAME === "localhost" ? "http://localhost:5000" : "https://playground.io",
+    origin: process.env.DB_HOSTNAME === 'localhost' ? 'http://localhost:5000' : 'https://playground.io',
     credentials: true,
-    allowedHeaders: ["Authorization"],
+    allowedHeaders: ['Authorization'],
     methods: ['GET', 'POST']
   }
 };
 
-
+module.exports = { corsOptions, socketCorsOptions }

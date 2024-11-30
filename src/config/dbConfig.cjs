@@ -1,6 +1,6 @@
 
-import pkg from 'pg';
-import dotenv from 'dotenv';
+const pkg = require('pg');
+const dotenv = require('dotenv');
 dotenv.config();
 const { Pool } = pkg;
 
@@ -15,10 +15,10 @@ const pool = new Pool({
     false
 });
 
-export const addDbToReq = (req, res, next) => {
+const addDbToReq = (req, res, next) => {
   req.db = pool;
   console.log('DB Pool added to request:', req.db !== undefined);
   next();
 };
 
-export default pool;
+module.exports = { pool, addDbToReq }

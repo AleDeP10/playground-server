@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 const hello = async (req, res) => {
   let name = 'World';
   if (req.query.name) {
@@ -9,4 +11,4 @@ const hello = async (req, res) => {
   return result;
 };
 
-export default { hello };
+module.exports = { hello };

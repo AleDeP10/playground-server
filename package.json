@@ -2,10 +2,11 @@
   "name": "playground-server",
   "version": "1.0.0",
   "description": "nodejs api for testing playground",
-  "main": "index.js",
-  "type": "module",
+  "main": "index.cjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./src/index.cjs",
+    "test": "jest",
+    "build": "babel src --out-dir lib"
   },
   "keywords": [
     "playground",
@@ -24,5 +25,12 @@
     "knex": "^3.1.0",
     "pg": "^8.13.1",
     "socket.io": "^4.8.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.25.9",
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0"
   }
 }

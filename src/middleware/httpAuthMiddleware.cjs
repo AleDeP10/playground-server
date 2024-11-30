@@ -1,19 +1,19 @@
-import jwt from 'jsonwebtoken';
-import dotenv from 'dotenv';
+const jwt = require('jsonwebtoken');
+const dotenv = require('dotenv');
 
 dotenv.config();
 
 const SECRET_KEY = process.env.JWT_SECRET;
 
-export const authenticateTokenHttp = (req, res, next) => {
+const authenticateTokenHttp = (req, res, next) => {
 
   const authHeader = req.headers['authorization'];
   const token = authHeader && authHeader.split(' ')[1];
 
-  //console.log( "token http="+token )
+  //console.log( 'token http='+token )
 
   if (token === null){
-    console.log("not-authorized")
+    console.log('not-authorized')
     return res.sendStatus(401);
   }
 
@@ -25,3 +25,4 @@ export const authenticateTokenHttp = (req, res, next) => {
   });
 };
 
+module.exports = { authenticateTokenHttp }
