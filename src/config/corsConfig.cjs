@@ -1,5 +1,6 @@
 const whitelist = [
   'http://localhost:5000',
+  'http://localhost:5001',
   'https://playground.onrender.com',
   'https://playground.io'
 ];
@@ -18,7 +19,7 @@ const corsOptions = {
 
 const socketCorsOptions = {
   cors: {
-    origin: process.env.DB_HOSTNAME === 'localhost' ? 'http://localhost:5000' : 'https://playground.io',
+    origin: process.env.DB_HOSTNAME === 'localhost' ? 'http://localhost:'+process.env.PORT : 'https://playground.io',
     credentials: true,
     allowedHeaders: ['Authorization'],
     methods: ['GET', 'POST']

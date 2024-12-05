@@ -56,7 +56,6 @@ const utentiConnessi = require('../dataStore.cjs');
 
 const crea = async (req, res) => {
     const { task, status = 'TODO' } = req.body;
-    console.log('todoList.controller', {db: req.db})
     try {
         const [id] = await req.db('Task')
             .insert({ task, status })
@@ -76,7 +75,6 @@ const setCriteriQuery = (query, criteri) => {
 };
 
 const ricerca = async (req, res) => {
-    console.log('todoList.controller', {db: req.db})
     const criteri = req.body;
     try {
         let query = req.db('Task AS ts')
@@ -95,7 +93,6 @@ const ricerca = async (req, res) => {
 };
 
 const aggiorna = async (req, res) => {
-    console.log('todoList.controller', {db: req.db})
     const { id } = req.query;
     const { task, status } = req.body;
     try {
