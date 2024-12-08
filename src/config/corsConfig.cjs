@@ -1,6 +1,5 @@
 const whitelist = [
-  'http://localhost:5000',
-  'http://localhost:5001',
+  'http://localhost:3000',
   'https://playground.onrender.com',
   'https://playground.io'
 ];
@@ -13,7 +12,7 @@ const corsOptions = {
       callback(new Error('Dominio non consentito'));
     }
   },
-  methods: ['GET', 'POST'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'] // Aggiungi Authorization agli allowedHeaders
 };
 
