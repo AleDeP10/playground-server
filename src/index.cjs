@@ -3,9 +3,9 @@ const cors = require('cors')
 const cookieParser = require('cookie-parser')
 const dotenv = require('dotenv');
 dotenv.config();
-const { corsOptions, socketCorsOptions } = require('./config/corsConfig.cjs');
+const { corsOptions, socketCorsOptions } = require('./config/corsConfig');
 //const { authenticateTokenSocket } = require('./middleware/socketAuthMiddleware');
-const knexMiddleware = require('./middleware/dbMiddleware.cjs');
+const knexMiddleware = require('./middleware/dbMiddleware');
 
 
 const app = express();
@@ -19,8 +19,8 @@ app.use(cookieParser());
 
 const httpServer = http.createServer(app);
 
-const homeRoutes = require('./routes/home.cjs');
-const todoRoutes = require('./routes/todo.cjs');
+const homeRoutes = require('./routes/home');
+const todoRoutes = require('./routes/todo');
 // app.use(knexMiddleware);
 
 app.use('/', homeRoutes);

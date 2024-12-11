@@ -1,10 +1,10 @@
 const express = require('express');
 
-const { addDbToReq } = require('../config/dbConfig.cjs');
-const helloController = require('../controllers/hello.cjs');
-const fetchDataController = require('../controllers/fetchData.cjs');
-const dbScanController = require('../controllers/dbScan.cjs');
-const { authenticateTokenHttp } = require('../middleware/httpAuthMiddleware.cjs');
+const { addDbToReq } = require('../config/dbConfig');
+const helloController = require('../controllers/hello');
+const fetchDataController = require('../controllers/fetchData');
+const dbScanController = require('../controllers/dbScan');
+const { authenticateTokenHttp } = require('../middleware/httpAuthMiddleware');
 
 const router = express.Router();
 

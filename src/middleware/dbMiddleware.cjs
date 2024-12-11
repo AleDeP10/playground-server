@@ -1,4 +1,4 @@
-const { knexInstance } = require('../config/knexfile.cjs');
+const { knexInstance } = require('../config/knexfile');
 
 const addKnexToReq = (req, res, next) => {
   req.db = knexInstance; // Assegna direttamente l'istanza knex
