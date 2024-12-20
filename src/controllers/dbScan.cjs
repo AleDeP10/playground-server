@@ -1,4 +1,4 @@
-const { pool } = require('../config/dbConfig');
+const { pool } = require('../config/dbConfig.cjs');
 
 const dbScan = async (req, res) => {
   let query = 'SELECT 1';

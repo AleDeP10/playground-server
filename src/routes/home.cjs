@@ -1,15 +1,18 @@
 const express = require('express');
 
-const { addDbToReq } = require('../config/dbConfig');
-const helloController = require('../controllers/hello');
-const fetchDataController = require('../controllers/fetchData');
-const dbScanController = require('../controllers/dbScan');
-const { authenticateTokenHttp } = require('../middleware/httpAuthMiddleware');
+const { addDbToReq } = require('../config/dbConfig.cjs');
+const helloController = require('../controllers/hello.cjs');
+const fetchDataController = require('../controllers/fetchData.cjs');
+const dbScanController = require('../controllers/dbScan.cjs');
+const loginController = require('../controllers/login.cjs');
+
+const { authenticateTokenHttp } = require('../middleware/httpAuthMiddleware.cjs');
 
 const router = express.Router();
 
 router.get('/hello', /*authenticateTokenHttp, */helloController.hello);
 router.get('/fetch_data', /*authenticateTokenHttp, */fetchDataController.fetchData);
 router.get('/db_scan', addDbToReq, /*authenticateTokenHttp, */dbScanController.dbScan);
+router.post('/login', loginController.login);
 
 module.exports = router;

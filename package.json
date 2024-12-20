@@ -1,6 +1,6 @@
 {
   "name": "playground-server",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "nodejs api for testing playground",
   "main": "index.cjs",
   "scripts": {
