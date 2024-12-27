@@ -1,6 +1,6 @@
 
-const pkg = require('pg');
-const dotenv = require('dotenv');
+import pkg from "pg";
+import dotenv from "dotenv";
 dotenv.config();
 const { Pool } = pkg;
 
@@ -21,4 +21,4 @@ const addDbToReq = (req, res, next) => {
   next();
 };
 
-module.exports = { pool, addDbToReq }
+export { pool, addDbToReq }

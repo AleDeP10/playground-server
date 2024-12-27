@@ -5,12 +5,14 @@
       "type": "node",
       "request": "launch",
       "name": "Debug Server",
-      "program": "${workspaceFolder}/src/index.cjs",
+      "program": "${workspaceFolder}/src/index.js",
       "args": ["--runInBand"],
       "console": "integratedTerminal",
       "internalConsoleOptions": "openOnSessionStart",
       "outFiles": ["${workspaceFolder}/lib/**/*.js"],
-      "runtimeExecutable": "node"
+      "runtimeExecutable": "node",
+      "skipFiles": ["<node_internals>/**"],
+      //"trace": true // Aggiungi questa linea per abilitare il logging
     }
   ]
 }

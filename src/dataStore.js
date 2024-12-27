@@ -1,0 +1,2 @@
+const utentiConnessi = {};
+export { utentiConnessi };

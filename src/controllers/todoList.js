@@ -8,7 +8,7 @@ const crea = async (req, res) => {
     res.status(500).json({ error: "Errore nella creazione del task" });
   }
 };
-
+/*
 const setCriteriQuery = (query, criteri) => {
   // Aggiungi la ricerca taskLike se definita
   console.log("todoList.controller", { criteri });
@@ -34,7 +34,7 @@ const setCriteriQuery = (query, criteri) => {
 
   return query;
 };
-
+*/
 const ricerca = async (req, res) => {
   const criteri = req.body;
   try {
@@ -43,7 +43,8 @@ const ricerca = async (req, res) => {
       .select("ts.id", "ts.task", "ts.status")
       .from("Task AS ts");
 
-    query = setCriteriQuery(query, criteri).orderBy("ts.id", "asc");
+    //query = setCriteriQuery(query, criteri).orderBy("ts.id", "asc");
+    query = query.orderBy("ts.id", "asc");
 
     const risultati = await query;
     console.log({ criteri, risultati });
@@ -86,4 +87,4 @@ const cancella = async (req, res) => {
   }
 };
 
-module.exports = { crea, ricerca, aggiorna, cancella };
+export { crea, ricerca, aggiorna, cancella };

@@ -1,4 +1,4 @@
-const { knexInstance } = require('../config/knexfile.cjs');
+import { knexInstance } from "../config/knexfile.js";
 
 const addKnexToReq = (req, res, next) => {
   req.db = knexInstance; // Assegna direttamente l'istanza knex
@@ -6,4 +6,4 @@ const addKnexToReq = (req, res, next) => {
   next();
 };
 
-module.exports = addKnexToReq;
+export default addKnexToReq;

@@ -1,4 +1,4 @@
-const { pool } = require('../config/dbConfig.cjs');
+import { pool } from "../config/dbConfig.js";
 
 const dbScan = async (req, res) => {
   let query = 'SELECT 1';
@@ -41,4 +41,4 @@ const dbScan = async (req, res) => {
   return body;
 };
 
-module.exports = { dbScan };
+export default dbScan;

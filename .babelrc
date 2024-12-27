@@ -1,4 +1,3 @@
 {
-    "presets": ["@babel/preset-env"],
     "sourceMaps": "inline" // Assicura che le mappe di sorgente siano incluse
 }

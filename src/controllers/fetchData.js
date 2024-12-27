@@ -11,4 +11,4 @@ const fetchData = async (req, res) => {
   return counter;
 }
 
-module.exports = { fetchData }
+export default fetchData;

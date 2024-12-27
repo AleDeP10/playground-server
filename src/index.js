@@ -1,17 +1,17 @@
-const express = require('express');
-const cors = require('cors')
-const cookieParser = require('cookie-parser')
-const dotenv = require('dotenv');
+import express from "express";
+import cors from "cors";
+import cookieParser from "cookie-parser";
+import dotenv from "dotenv";
 dotenv.config();
-const { corsOptions, socketCorsOptions } = require('./config/corsConfig.cjs');
-//const { authenticateTokenSocket } = require('./middleware/socketAuthMiddleware.cjs');
-const knexMiddleware = require('./middleware/dbMiddleware.cjs');
+import { corsOptions, socketCorsOptions } from "./config/corsConfig.js";
+//import { authenticateTokenSocket } from "./middleware/socketAuthMiddleware.js";
+//import knexMiddleware from "./middleware/dbMiddleware.js";
 
 
 const app = express();
 
 //https server ====================================================================
-const http = require('http');
+import http from "http";
 
 app.use(cors(corsOptions));
 app.use(express.json());
@@ -19,16 +19,16 @@ app.use(cookieParser());
 
 const httpServer = http.createServer(app);
 
-const homeRoutes = require('./routes/home.cjs');
-const todoRoutes = require('./routes/todo.cjs');
+import homeRoutes from "./routes/home.js";
+import todoRoutes from "./routes/todo.js";
 // app.use(knexMiddleware);
 
 app.use('/', homeRoutes);
 app.use('/todo', todoRoutes);
 
 //socket ==========================================================================
-const { Server } = require('socket.io');
-const jwt = require('jsonwebtoken');
+import { Server } from "socket.io";
+import jwt from "jsonwebtoken";
 
 const server = http.createServer(app);
 
@@ -40,7 +40,7 @@ const io = new Server(httpServer, {
   server, socketCorsOptions
 });
 
-// const utentiConnessi = require('./dataStore.cjs');
+// import utentiConnessi from "./dataStore.js";
 
 // function logUtentiConnessi(){
 //   console.log('utentiConnessi:')

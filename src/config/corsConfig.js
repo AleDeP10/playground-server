@@ -25,4 +25,4 @@ const socketCorsOptions = {
   }
 };
 
-module.exports = { corsOptions, socketCorsOptions }
+export { corsOptions, socketCorsOptions }

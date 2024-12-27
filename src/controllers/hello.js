@@ -11,4 +11,4 @@ const hello = async (req, res) => {
   return result;
 };
 
-module.exports = { hello };
+export default hello;

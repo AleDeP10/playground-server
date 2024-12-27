@@ -1,10 +1,8 @@
-const { pool } = require("../config/dbConfig.cjs");
-const jwt = require("jsonwebtoken");
+import { pool } from "../config/dbConfig.js";
+import jwt from "jsonwebtoken";
 
 const login = async (req, res) => {
   const { username, password } = req.body;
-
-  console.log("login.controller", { pool });
 
   pool.query(
     `SELECT 
@@ -52,4 +50,4 @@ const login = async (req, res) => {
   );
 };
 
-module.exports = { login };
+export default login;
