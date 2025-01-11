@@ -33,22 +33,14 @@ ALTER TABLE IF EXISTS public."User"
 
 -- Table: public.Task
 
+-- DROP TABLE IF EXISTS public."Task";
+
 CREATE TABLE IF NOT EXISTS public."Task"
 (
     id SERIAL PRIMARY KEY,
     task VARCHAR(50) NOT NULL,
-    status VARCHAR(12) DEFAULT 'TODO' CHECK (status IN ('TODO', 'IN PROGRESS', 'DONE')),
-    description TEXT NOT NULL DEFAULT '',
-    user_id INTEGER,
-    CONSTRAINT "Task_User" FOREIGN KEY (user_id)
-        REFERENCES public."User" (id) MATCH SIMPLE
-        ON UPDATE NO ACTION
-        ON DELETE NO ACTION
+    status VARCHAR(12) DEFAULT 'TODO' CHECK (status IN ('TODO', 'IN PROGRESS', 'DONE'))
 );
 
 ALTER TABLE IF EXISTS public."Task"
     OWNER to postgres;
-
--- DROP INDEX IF EXISTS public."fki_Task_User";
-CREATE INDEX IF NOT EXISTS "fki_Task_User"
-    ON public."Task" (user_id);

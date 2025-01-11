@@ -1,11 +1,11 @@
-const crea = async (req, res) => {
+const create = async (req, res) => {
   const { task, status = "TODO" } = req.body;
   try {
     const [id] = await req.db("Task").insert({ task, status }).returning("id");
     res.status(201).json(id);
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: "Errore nella creazione del task" });
+    res.status(500).json({ error: "Error in task creation" });
   }
 };
 /*
@@ -35,7 +35,7 @@ const setCriteriQuery = (query, criteri) => {
   return query;
 };
 */
-const ricerca = async (req, res) => {
+const search = async (req, res) => {
   const criteri = req.body;
   try {
     let query = req
@@ -51,40 +51,40 @@ const ricerca = async (req, res) => {
     res.status(200).json(risultati);
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: "Errore nella ricerca dei dati" });
+    res.status(500).json({ error: "Error in task search" });
   }
 };
 
-const aggiorna = async (req, res) => {
+const update = async (req, res) => {
   const { id } = req.query;
   const { task, status } = req.body;
   try {
     const count = await req.db("Task").where({ id }).update({ task, status });
     if (count) {
-      res.status(200).json({ message: "Task aggiornato con successo" });
+      res.status(200).json({ message: "Task updated successfully" });
     } else {
-      res.status(404).json({ error: "Task non trovato" });
+      res.status(404).json({ error: "Task not found" });
     }
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: "Errore nell'aggiornamento del task" });
+    res.status(500).json({ error: "Error in updating the task" });
   }
 };
 
-const cancella = async (req, res) => {
+const remove = async (req, res) => {
   console.log("req.db type:", typeof req.db); // Verifica che sia 'function'
   const { id } = req.query;
   try {
     const count = await req.db("Task").where({ id }).del();
     if (count) {
-      res.status(200).json({ message: "Task eliminato con successo" });
+      res.status(200).json({ message: "Task deleted successfully" });
     } else {
-      res.status(404).json({ error: "Task non trovato" });
+      res.status(404).json({ error: "Task not found" });
     }
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: "Errore nell'eliminazione del task" });
+    res.status(500).json({ error: "Error in deleting the task" });
   }
 };
 
-export { crea, ricerca, aggiorna, cancella };
+export { create, search, update, remove };

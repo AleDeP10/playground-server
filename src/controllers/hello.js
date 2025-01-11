@@ -1,13 +1,13 @@
 // @ts-nocheck
 
 const hello = async (req, res) => {
-  let name = 'Mondo';
+  let name = "World";
   if (req.query.name) {
     name = req.query.name;
   }
-  const result = 'Ciao, ' + name + '!';
+  const result = "Hello, " + name + "!";
   res.status(200).json({ result });
-  console.log('hello.controller', { name: req.query.name, result });
+  console.log("hello.controller", { name: req.query.name, result });
   return result;
 };
 

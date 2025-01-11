@@ -21,4 +21,4 @@ const addDbToReq = (req, res, next) => {
   next();
 };
 
-export { pool, addDbToReq }
+export { pool, addDbToReq };
