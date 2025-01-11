@@ -11,8 +11,8 @@ import { authenticateTokenHttp } from "../middleware/httpAuthMiddleware.js";
 const router = express.Router();
 
 router.get('/hello', hello);
-router.get('/fetch_data', fetchData);
-router.get('/db_scan', addDbToReq, dbScan);
+router.get('/fetchData', fetchData);
+router.get('/dbScan', addDbToReq, dbScan);
 router.post('/login', login);
 
 export default router;
