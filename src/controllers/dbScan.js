@@ -1,8 +1,8 @@
 import { pool } from "../config/dbConfig.js";
 
 const dbScan = async (req, res) => {
-  let query = 'SELECT 1';
-  let alias = 'result';
+  let query = "SELECT 1";
+  let alias = "result";
   let result = null;
   let body;
   if (req.query.query) {
@@ -28,13 +28,13 @@ const dbScan = async (req, res) => {
       body = { [alias]: result.rows[0][alias] }
     }
   } catch (error) {
-    console.error('Error fetching data:', error.message);
+    console.error("Error fetching data:", error.message);
     throw error;
   }
 
   if (body) {
     res.status(200).json(body);
-    console.log('dbScan.controller', { req: req.query, body });
+    console.log("dbScan.controller", { req: req.query, body });
   } else {
     res.status(500);
   }
