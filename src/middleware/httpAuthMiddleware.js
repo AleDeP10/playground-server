@@ -18,7 +18,6 @@ const authenticateTokenHttp = (req, res, next) => {
 
   jwt.verify(token, SECRET_KEY, (err, user) => {
     if (err) return res.sendStatus(403);
-    console.log("httpMiddleware", {user})
     req.userId = user.userId;
     next();
   });

@@ -46,9 +46,8 @@ const search = async (req, res) => {
     //query = setCriteriQuery(query, criteri).orderBy("ts.id", "asc");
     query = query.orderBy("ts.id", "asc");
 
-    const risultati = await query;
-    console.log({ criteri, risultati });
-    res.status(200).json(risultati);
+    const results = await query;
+    res.status(200).json(results);
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Error in task search" });
