@@ -1,12 +1,12 @@
 # Playground Server
 
- The goal of the Playground projects is to create a demonstration application using React and a Node.jsbackend. This aims to provide a minimal example of how the involved technologies work. The implementation follows an incremental development approach, allowing for the integration of new software tools over time. This fosters a deeper understanding before their deployment in more  complex projects.
+ The goal of the Playground projects is to create a demonstration application using React and a Node.js backend. This aims to provide a minimal example of how the involved technologies work. The implementation follows an incremental development approach, allowing for the integration of new software tools over time. This fosters a deeper understanding before their deployment in more  complex projects.
 
  The scenario considered is a classic TodoList, which involves a list of tasks saved in a Postgres database, accompanied by a table of users authorized to interact with it.
 
  The project exposes unauthenticated endpoints for the home API, which are useful for checking whether the server is operating and if the database is reachable. It also includes endpoints related to todo, which allow logged-in users to interact with the data. 
 
- See [Playground Frontend](https://github.com/AleDeP10/playground-frontend) to explore the features  provided by the application.
+ See [Playground Frontend](https://github.com/AleDeP10/playground-frontend) to explore the features provided by the application.
 
 ## Supported Endpoints
 
@@ -266,15 +266,12 @@ PORT=5000
 ```
 In this project, `dotenv` is used to load environment configurations required for connecting to the database and managing JWT authentication.
 
-By leveraging these powerful middleware tools, the project achieves a robust, flexible, and secure backend architecture.
-
-
 
 ## Project Setup
 
 Follow these steps to set up the project and get it running on your local machine.
 
-### 1. Clone the Repository
+### 1. Clone the repository
 
 First, clone the repository to your local machine using Git:
 
@@ -282,7 +279,7 @@ First, clone the repository to your local machine using Git:
 git clone https://github.com/AleDeP10/playground-server.git
 ```
 
-### 2. Install the Database
+### 2. Install the database
 
 The `schemas` folder contains the SQL file that describes the database structure and a complete backup of both the structure and data, allowing you to install it on your own computer.
 
@@ -308,7 +305,7 @@ Follow these steps to set up the database:
 
 Replace `<username>` with your PostgreSQL username. Enter the password when required.
 
-### 3. Install Dependencies
+### 3. Install dependencies
 
 Navigate back to the root directory of the project and install the required dependencies using npm:
 
@@ -316,7 +313,7 @@ Navigate back to the root directory of the project and install the required depe
 npm install
 ```
 
-### 4. Start the Server
+### 4. Start the server
 
 Start the server with the following command:
 
